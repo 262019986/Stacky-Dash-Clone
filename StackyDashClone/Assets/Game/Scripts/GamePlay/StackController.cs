@@ -5,11 +5,13 @@ using UnityEngine;
 public class StackController : MonoBehaviour
 {
 
+    public ParticleSystem dustPs;
     public bool isMovingForward; 
     public bool isMovingBack;
     public bool isMovingRight;
     public bool isMovingLeft;
     public float speed; 
+    private RigidbodyConstraints defaultConstraints;
     private Rigidbody Rigidbody;
     public Rigidbody rigidbody
     {
@@ -21,6 +23,13 @@ public class StackController : MonoBehaviour
             return Rigidbody;
         }
     }
+    
+
+    private void Awake() 
+    {
+        defaultConstraints=rigidbody.constraints;
+    }
+
     void Start()
     {
         
@@ -29,28 +38,40 @@ public class StackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        StartMovement();
     }
 
-    public void Movement()
+    public void StartMovement()
     {
         
         if( (Input.GetKey(KeyCode.W)))
         {
+            rigidbody.constraints=defaultConstraints;
+            
             isMovingForward=true;
+            dustPs.Play();
 
         }
         else if( (Input.GetKey(KeyCode.S)))
         {
+            rigidbody.constraints=defaultConstraints;
+           
             isMovingBack=true;
+            dustPs.Play();
         }
         else if( (Input.GetKey(KeyCode.A)))
         {
+            rigidbody.constraints=defaultConstraints;
+            
             isMovingLeft=true;
+            dustPs.Play();
         }
         else if( (Input.GetKey(KeyCode.D)))
         {
+            rigidbody.constraints=defaultConstraints;
+           
             isMovingRight=true;
+            dustPs.Play();
         }
 
 
@@ -74,6 +95,19 @@ public class StackController : MonoBehaviour
         
     }
 
+     private void StopMovement()
+    {
+        rigidbody.velocity=Vector3.zero;
+        isMovingForward=false;
+        isMovingBack=false;
+        isMovingLeft=false;
+        isMovingRight=false;
+        dustPs.Stop();
+        rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
+        
+    }
+
     
     private void OnCollisionEnter(Collision other) {
         
@@ -88,11 +122,27 @@ public class StackController : MonoBehaviour
 
         if(other.gameObject.tag=="Obstacle")
         {
-            rigidbody.velocity=Vector3.zero;
-            isMovingForward=false;
-            isMovingBack=false;
-            isMovingLeft=false;
-            isMovingRight=false;
+            /*if(transform.position.x>other.gameObject.transform.position.x+transform.localScale.x/2+other.gameObject.transform.localScale.x/2-0.01f)
+            {
+                transform.position=new Vector3(transform.posititon.x+0.01f,transform.position.y,transform.position.z);
+            }
+            if(transform.position.z>other.gameObject.transform.position.z+transform.localScale.z/2+other.gameObject.transform.localScale.z/2-0.01f)
+            {
+               transform.position=new Vector3(transform.posititon.x,transform.position.y,transform.position.z+0.01f);
+            }
+
+            if(transform.position.x<other.gameObject.transform.position.x+transform.localScale.x/2+other.gameObject.transform.localScale.x/2+0.01f)
+            {
+                 transform.position=new Vector3(transform.posititon.x-0.01f,transform.position.y,transform.position.z);
+            }
+            if(transform.position.z<other.gameObject.transform.position.z+transform.localScale.z/2+other.gameObject.transform.localScale.z/2+0.01f)
+            {
+                 transform.position=new Vector3(transform.posititon.x,transform.position.y,transform.position.z-0.01f);
+            }*/
+            StopMovement();
+
         }
     }
+
+   
 }
