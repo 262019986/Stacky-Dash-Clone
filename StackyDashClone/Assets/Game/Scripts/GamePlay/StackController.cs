@@ -11,7 +11,10 @@ public class StackController : MonoBehaviour
     public bool isMovingRight;
     public bool isMovingLeft;
     public float speed; 
+    public int count;
+    private Character characterScript;
     private RigidbodyConstraints defaultConstraints;
+    public  Vector3 characterPos;
     private Rigidbody Rigidbody;
     public Rigidbody rigidbody
     {
@@ -43,6 +46,7 @@ public class StackController : MonoBehaviour
 
     public void StartMovement()
     {
+        
         
         if( (Input.GetKey(KeyCode.W)))
         {
@@ -111,36 +115,37 @@ public class StackController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other) {
         
-        var count=transform.childCount+1;
+        count=transform.childCount+1;
         if(other.gameObject.tag=="CollectibleStack")
         {
             
             other.transform.position=new Vector3(transform.position.x,transform.position.y+transform.localScale.y*count,transform.position.z);
             other.transform.parent=transform;
-          //  other.gameObject.AddComponent<StackController>();/
+            
+            
+
+          
         }
 
         if(other.gameObject.tag=="Obstacle")
         {
-            /*if(transform.position.x>other.gameObject.transform.position.x+transform.localScale.x/2+other.gameObject.transform.localScale.x/2-0.01f)
-            {
-                transform.position=new Vector3(transform.posititon.x+0.01f,transform.position.y,transform.position.z);
-            }
-            if(transform.position.z>other.gameObject.transform.position.z+transform.localScale.z/2+other.gameObject.transform.localScale.z/2-0.01f)
-            {
-               transform.position=new Vector3(transform.posititon.x,transform.position.y,transform.position.z+0.01f);
-            }
-
-            if(transform.position.x<other.gameObject.transform.position.x+transform.localScale.x/2+other.gameObject.transform.localScale.x/2+0.01f)
-            {
-                 transform.position=new Vector3(transform.posititon.x-0.01f,transform.position.y,transform.position.z);
-            }
-            if(transform.position.z<other.gameObject.transform.position.z+transform.localScale.z/2+other.gameObject.transform.localScale.z/2+0.01f)
-            {
-                 transform.position=new Vector3(transform.posititon.x,transform.position.y,transform.position.z-0.01f);
-            }*/
             StopMovement();
-
+            if(transform.position.x<other.transform.position.x)
+            {
+                transform.position=new Vector3(transform.position.x-0.04f,transform.position.y,transform.position.z);
+            }
+            if(transform.position.x>other.transform.position.x)
+            {
+                transform.position=new Vector3(transform.position.x+0.04f,transform.position.y,transform.position.z);
+            }
+            if(transform.position.z<other.transform.position.z)
+            {
+                transform.position=new Vector3(transform.position.x,transform.position.y,transform.position.z-0.04f);
+            }
+            if(transform.position.z>other.transform.position.z)
+            {
+                transform.position=new Vector3(transform.position.x,transform.position.y,transform.position.z+0.04f);
+            }
         }
     }
 
