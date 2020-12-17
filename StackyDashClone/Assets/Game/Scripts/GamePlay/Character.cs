@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
@@ -17,11 +17,12 @@ public class Character : MonoBehaviour
 
             }
             return Rigidbody;
+            
         }
     }
     private void OnEnable() 
     {
-        
+    
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class Character : MonoBehaviour
     {
         stack =GameObject.FindWithTag("Stack");
         
-
+        
     }
     private void Update() 
     {
@@ -49,7 +50,7 @@ public class Character : MonoBehaviour
 
     public void AdjustCharaterPos()
     {
-        transform.position=new Vector3(stack.transform.position.x,stack.transform.position.y+stack.transform.localScale.y*stack.GetComponent<StackController>().count+1,stack.transform.position.z);
+        transform.position=new Vector3(stack.transform.position.x,stack.transform.position.y+stack.transform.localScale.y*(stack.GetComponent<StackController>().count+1),stack.transform.position.z);
     }
 
 

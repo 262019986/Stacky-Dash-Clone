@@ -9,7 +9,7 @@ public class InitManager : MonoBehaviour
          void Start()
     {
         //Init Game Here
-        SceneManager.LoadScene("Ui", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("Ui", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level", LoadSceneMode.Additive);
         Destroy(gameObject);
     }

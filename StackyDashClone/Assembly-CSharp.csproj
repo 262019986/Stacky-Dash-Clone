@@ -38,8 +38,11 @@
   <ItemGroup>
      <Compile Include="Assets\Game\Scripts\GamePlay\Character.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\StackController.cs" />
+     <Compile Include="Assets\Game\Scripts\Grid View\Array2D.cs" />
+     <Compile Include="Assets\Game\Scripts\Grid View\ArraySpawner.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\EventManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\InitManager.cs" />
+     <Compile Include="Assets\Game\Scripts\Managers\LevelManager.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -245,6 +248,9 @@
     </Reference>
     <Reference Include="clipper_library">
         <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -612,9 +618,6 @@
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
@@ -630,11 +633,23 @@
     <Reference Include="Unity.TextMeshPro">
         <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{c1bf56dc-35f8-5a8a-01eb-57f0315774bd}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{b12430b1-bfaa-ee5b-ffe3-b052d12916c6}</Project>
+      <Name>UnityEngine.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
+      <Name>UnityEditor.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

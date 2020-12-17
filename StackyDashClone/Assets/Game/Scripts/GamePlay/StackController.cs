@@ -1,44 +1,35 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class StackController : MonoBehaviour
 {
 
-    public ParticleSystem dustPs;
     public bool isMovingForward; 
     public bool isMovingBack;
     public bool isMovingRight;
     public bool isMovingLeft;
-    public float speed; 
     public int count;
+    
+    public float passTime=1.5f;
+    public float maxRayDistance=50f;
     private Character characterScript;
-    private RigidbodyConstraints defaultConstraints;
     public  Vector3 characterPos;
-    private Rigidbody Rigidbody;
-    public Rigidbody rigidbody
-    {
-        get{
-            if(Rigidbody==null)
-            {
-                Rigidbody=GetComponent<Rigidbody>();
-            }
-            return Rigidbody;
-        }
-    }
+  
     
 
     private void Awake() 
     {
-        defaultConstraints=rigidbody.constraints;
+       
     }
 
     void Start()
     {
-        
+    
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         StartMovement();
@@ -50,50 +41,83 @@ public class StackController : MonoBehaviour
         
         if( (Input.GetKey(KeyCode.W)))
         {
-            rigidbody.constraints=defaultConstraints;
+          
             
             isMovingForward=true;
-            dustPs.Play();
+            
 
         }
         else if( (Input.GetKey(KeyCode.S)))
         {
-            rigidbody.constraints=defaultConstraints;
+            
            
             isMovingBack=true;
-            dustPs.Play();
+            
         }
         else if( (Input.GetKey(KeyCode.A)))
         {
-            rigidbody.constraints=defaultConstraints;
+            
             
             isMovingLeft=true;
-            dustPs.Play();
+            
         }
         else if( (Input.GetKey(KeyCode.D)))
         {
-            rigidbody.constraints=defaultConstraints;
+            
            
             isMovingRight=true;
-            dustPs.Play();
+            
         }
 
 
         if(isMovingForward)
         {
-            rigidbody.AddForce(Vector3.forward*speed);
+            Ray ray = new Ray(transform.position, Vector3.forward);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, maxRayDistance);
+            
+                
+                transform.DOLocalMove( hit.transform.position-Vector3.forward,passTime );
+                Debug.Log("fORWARD");
+                Debug.Log(hit.collider.gameObject.name);
+           
         }
         else if(isMovingBack)
         {
-            rigidbody.AddForce(Vector3.back*speed);
+            Ray ray = new Ray(transform.position, Vector3.back);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, maxRayDistance);
+           
+                
+                transform.DOLocalMove( hit.transform.position-Vector3.back,passTime );
+                Debug.Log("Back");
+                Debug.Log(hit.collider.gameObject.name);
+            
         }
         else if (isMovingRight)
         {
-            rigidbody.AddForce(Vector3.right*speed);
+            Ray ray = new Ray(transform.position, Vector3.right);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, maxRayDistance);
+            
+            
+                
+                transform.DOLocalMove( hit.transform.position-Vector3.right,passTime );
+                Debug.Log("Right");
+                Debug.Log(hit.collider.gameObject.name);
+           
         }
         else if(isMovingLeft)
         {
-            rigidbody.AddForce(Vector3.left*speed);
+           Ray ray = new Ray(transform.position, Vector3.left);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, maxRayDistance);
+           
+                
+                transform.DOLocalMove( hit.transform.position-Vector3.left,passTime );
+                Debug.Log("Left");
+                Debug.Log(hit.collider.gameObject.name);
+            
         }
 
         
@@ -101,21 +125,20 @@ public class StackController : MonoBehaviour
 
      private void StopMovement()
     {
-        rigidbody.velocity=Vector3.zero;
+        
         isMovingForward=false;
         isMovingBack=false;
         isMovingLeft=false;
         isMovingRight=false;
-        dustPs.Stop();
-        rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
         
     }
 
     
-    private void OnCollisionEnter(Collision other) {
+        private void OnTriggerEnter(Collider other) {
         
-        count=transform.childCount+1;
+   
+        
+        count=transform.childCount;
         if(other.gameObject.tag=="CollectibleStack")
         {
             
@@ -130,22 +153,6 @@ public class StackController : MonoBehaviour
         if(other.gameObject.tag=="Obstacle")
         {
             StopMovement();
-            if(transform.position.x<other.transform.position.x)
-            {
-                transform.position=new Vector3(transform.position.x-0.04f,transform.position.y,transform.position.z);
-            }
-            if(transform.position.x>other.transform.position.x)
-            {
-                transform.position=new Vector3(transform.position.x+0.04f,transform.position.y,transform.position.z);
-            }
-            if(transform.position.z<other.transform.position.z)
-            {
-                transform.position=new Vector3(transform.position.x,transform.position.y,transform.position.z-0.04f);
-            }
-            if(transform.position.z>other.transform.position.z)
-            {
-                transform.position=new Vector3(transform.position.x,transform.position.y,transform.position.z+0.04f);
-            }
         }
     }
 
