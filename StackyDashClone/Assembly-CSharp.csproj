@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Game\Scripts\Camera\CineMachine.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Character.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\StackController.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\Array2D.cs" />
@@ -246,11 +247,11 @@
     <Reference Include="UnityEditor">
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="clipper_library">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
         <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="clipper_library">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

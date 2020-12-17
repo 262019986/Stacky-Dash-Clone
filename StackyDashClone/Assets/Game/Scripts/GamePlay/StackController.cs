@@ -26,7 +26,7 @@ public class StackController : MonoBehaviour
 
     void Start()
     {
-    
+       
     }
 
    
@@ -72,89 +72,98 @@ public class StackController : MonoBehaviour
 
         if(isMovingForward)
         {
-            Ray ray = new Ray(transform.position, Vector3.forward);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, maxRayDistance);
-            
-                
-                transform.DOLocalMove( hit.transform.position-Vector3.forward,passTime );
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.forward, 100.0F);
+            isMovingForward=false;
+            for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            if(hit.collider.gameObject.tag=="Obstacle")
+            {
+                transform.DOLocalMove(new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.forward,passTime );
                 Debug.Log("fORWARD");
                 Debug.Log(hit.collider.gameObject.name);
-           
+                break;
+            }
+            
+        }
+                
+                
         }
         else if(isMovingBack)
         {
-            Ray ray = new Ray(transform.position, Vector3.back);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, maxRayDistance);
-           
-                
-                transform.DOLocalMove( hit.transform.position-Vector3.back,passTime );
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.forward*-1, 100.0F);
+            isMovingBack=false;
+            for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            if(hit.collider.gameObject.tag=="Obstacle")
+            {
+                transform.DOLocalMove( new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.back,passTime );
                 Debug.Log("Back");
                 Debug.Log(hit.collider.gameObject.name);
+                break;
+            }
+            
+        }
             
         }
         else if (isMovingRight)
         {
-            Ray ray = new Ray(transform.position, Vector3.right);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, maxRayDistance);
-            
-            
-                
-                transform.DOLocalMove( hit.transform.position-Vector3.right,passTime );
-                Debug.Log("Right");
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.right, 100.0F);
+            isMovingRight=false;
+            for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            if(hit.collider.gameObject.tag=="Obstacle")
+            {
+                transform.DOLocalMove( new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.right,passTime );
+                Debug.Log("right");
                 Debug.Log(hit.collider.gameObject.name);
+                break;
+            }
+            
+        }
            
         }
         else if(isMovingLeft)
         {
-           Ray ray = new Ray(transform.position, Vector3.left);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, maxRayDistance);
-           
-                
-                transform.DOLocalMove( hit.transform.position-Vector3.left,passTime );
-                Debug.Log("Left");
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position, transform.up*-1, 100.0F);
+            isMovingLeft=false;
+            for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            if(hit.collider.gameObject.tag=="Obstacle")
+            {
+                transform.DOLocalMove( new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.left,passTime );
+                Debug.Log("left");
                 Debug.Log(hit.collider.gameObject.name);
+                break;
+            }
+            
+        }
             
         }
 
-        
-    }
-
-     private void StopMovement()
-    {
-        
-        isMovingForward=false;
-        isMovingBack=false;
-        isMovingLeft=false;
-        isMovingRight=false;
         
     }
 
     
-        private void OnTriggerEnter(Collider other) {
-        
-   
-        
-        count=transform.childCount;
-        if(other.gameObject.tag=="CollectibleStack")
+        private void OnTriggerEnter(Collider other) 
         {
-            
-            other.transform.position=new Vector3(transform.position.x,transform.position.y+transform.localScale.y*count,transform.position.z);
-            other.transform.parent=transform;
-            
-            
+           
+            if(other.tag=="CollectibleStacks")
+            {
+                Debug.Log("stack");
+                other.transform.parent=transform;
+                count=transform.childCount;
+                other.transform.position=transform.position+count*Vector3.up*transform.localScale.y;
 
-          
+            }
         }
-
-        if(other.gameObject.tag=="Obstacle")
-        {
-            StopMovement();
-        }
-    }
 
    
 }

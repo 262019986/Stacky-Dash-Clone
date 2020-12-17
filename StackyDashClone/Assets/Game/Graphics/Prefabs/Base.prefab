@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7729143502577417667}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -171,12 +171,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 6232302185152393158, guid: 685b944020a6a4c44935d712c4d03d47,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6232302185152393176, guid: 685b944020a6a4c44935d712c4d03d47,
         type: 3}
       propertyPath: m_Name
       value: Stack
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6232302185152393177, guid: 685b944020a6a4c44935d712c4d03d47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 685b944020a6a4c44935d712c4d03d47, type: 3}
 --- !u!4 &5693256301756381154 stripped
 Transform:

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3209624083819128087}
   - component: {fileID: 2421041656949903867}
   - component: {fileID: 4007564128316771054}
-  - component: {fileID: -2377906141914754651}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 832434081980266344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2945944, y: 0.93142354, z: 1.0418779}
-  m_LocalScale: {x: 0.95, y: 0.1, z: 0.95}
+  m_LocalScale: {x: 10, y: 0.1, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,25 +93,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2377906141914754651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832434081980266344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21fb6de991af9284a8d7400b0c77683d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dustPs: {fileID: 0}
-  isMovingForward: 0
-  isMovingBack: 0
-  isMovingRight: 0
-  isMovingLeft: 0
-  speed: 0
-  count: 0
-  passTime: 1.5
-  maxRayDistance: 50
-  characterPos: {x: 0, y: 0, z: 0}
