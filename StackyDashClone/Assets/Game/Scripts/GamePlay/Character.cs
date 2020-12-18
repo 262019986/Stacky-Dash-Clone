@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
+using DG.Tweening;
 
 public class Character : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class Character : MonoBehaviour
             
         }
     }
+
+    
+
     private void OnEnable() 
     {
     
@@ -36,6 +39,7 @@ public class Character : MonoBehaviour
         stack =GameObject.FindWithTag("Stack");
         
         
+
     }
     private void Update() 
     {
