@@ -54,11 +54,7 @@ public class OrthoZoomAndPan : MonoBehaviour
         mainCamera = Camera.main;
 
         //Camera is Prespective
-        if (!mainCamera.orthographic)
-        {
-            //Log error as this script only works for ortho
-            Debug.LogError("This script only works with Orthographic camera. For Prespective camera use the other prefab: PRESPECTCamSimpleZoomAndPan");
-        }
+       
 
         //We do not want to simualte touch with mouse input 
         Input.simulateMouseWithTouches = false;

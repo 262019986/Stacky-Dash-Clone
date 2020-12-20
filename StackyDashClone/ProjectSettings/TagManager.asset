@@ -8,6 +8,8 @@ TagManager:
   - Stack
   - Character
   - CollectibleStacks
+  - Joystick
+  - Collected
   layers:
   - Default
   - TransparentFX

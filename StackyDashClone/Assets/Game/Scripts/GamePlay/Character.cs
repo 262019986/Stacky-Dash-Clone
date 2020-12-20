@@ -7,20 +7,6 @@ public class Character : MonoBehaviour
 {
     private GameObject stack;
 
-    private Rigidbody Rigidbody;
-    public Rigidbody rigidbody
-    {
-        get{
-            if(Rigidbody==null)
-            {
-                Rigidbody=GetComponent<Rigidbody>();
-
-            }
-            return Rigidbody;
-            
-        }
-    }
-
     
 
     private void OnEnable() 
@@ -36,7 +22,7 @@ public class Character : MonoBehaviour
 
     private void Start() 
     {
-        stack =GameObject.FindWithTag("Stack");
+        
         
         
 
@@ -54,7 +40,7 @@ public class Character : MonoBehaviour
 
     public void AdjustCharaterPos()
     {
-        transform.position=new Vector3(stack.transform.position.x,stack.transform.position.y+stack.transform.localScale.y*(stack.GetComponent<StackController>().count+1),stack.transform.position.z);
+        transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x,(GameObject.FindWithTag("Player").GetComponent<StackController>().count+1)*0.1f,GameObject.FindWithTag("Player").transform.position.z);
     }
 
 

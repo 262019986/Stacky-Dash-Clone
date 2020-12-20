@@ -6,34 +6,12 @@ using DG.Tweening;
 public class StackController : MonoBehaviour
 {
 
-    public bool canMove=true;
+    
     public int count;
-    Vector3 lastPos;
-    
-    private GameObject hitObject;
+    public Direction _direction=new Direction();
     public float passTime=1.5f;
-    public float maxRayDistance=50f;
-    private Character characterScript;
-    public  Vector3 characterPos;
 
-     private Vector2 movementInput; //this will hold the input value for joystick or touchpad
-    private Vector3 tiltInput; //This will hold the tilt value of the device
 
-    JoystickMovement Joystick;
-    [SerializeField] private TiltController TiltController;
-
-    private Rigidbody rigidbody;
-  
-    
-
-    private void Awake() 
-    {
-       
-    }
-
-    private void Start() {
-        rigidbody=GetComponent<Rigidbody>();
-    }
     void OnEnable()
     {
         //Swipe events
@@ -63,131 +41,117 @@ public class StackController : MonoBehaviour
    
 
    
-    void FixedUpdate()
+     private void OnSwipeRight()
     {
-        //We are getting the horizontal and vertical touch or joystick input
-        movementInput.x = Joystick.HorizontalInput();
-        movementInput.y = Joystick.VerticalInput();
-
-       
-        
+        if(_direction.Right)
+        {
+            _direction.Right=false;
+            Move(Vector3.back);
+        }
     }
 
-    
-   private void CanMove()
-    {
-        canMove=true;
-    }
     private void OnSwipeUp()
     {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(transform.position, transform.right, 100.0F);
-            
-            for (int i = 0; i < hits.Length; i++)
-            {
-                RaycastHit hit = hits[i];
-    
-                if(hit.collider.gameObject.tag=="Obstacle"&&canMove)
-                {
-                    canMove=false;
-                    transform.DOLocalMove(new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.right,passTime );
-
-                    Debug.Log("fORWARD");
-                    Debug.Log(hit.collider.gameObject.name);
-                    Invoke("CanMove",passTime);
-
-                    return;
-                }
-                
-            }
+       if(_direction.Up)
+       {
+            _direction.Up=false;
+            Move(Vector3.right);
+       }
     }
 
 
 
     private void OnSwipeDown()
     {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(transform.position, Vector3.left, 100.0F);
-            for (int i = 0; i < hits.Length; i++)
+        if(_direction.Down)
         {
-           RaycastHit hit = hits[i];
-           
-            
-                
-            if(hit.collider.gameObject.tag=="Obstacle"&&canMove)
-            {
-                canMove=false;
-                transform.DOLocalMove(new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)+Vector3.right,passTime );
-                Invoke("CanMove",passTime);
-                return;
-            }
-            
+            _direction.Down=false;
+             Move(Vector3.left);
         }
+            
     }
 
     private void OnSwipeLeft()
     {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(transform.position, transform.forward, 100.0F);
-            for (int i = 0; i < hits.Length; i++)
-        {   
-
-            RaycastHit hit = hits[i];
-                
-            
-            if(hit.collider.gameObject.tag=="Obstacle"&&canMove)
-            {
-                canMove=false;
-                transform.DOLocalMove( new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)-Vector3.forward,passTime );
-                Debug.Log("Back");
-                Debug.Log(hit.collider.gameObject.name);
-                Invoke("CanMove",passTime);
-                return;
-            }
-            
-        }
-    }
-
-    private void OnSwipeRight()
-    {
-        RaycastHit[] hits;
-            hits = Physics.RaycastAll(transform.position, transform.forward*-1, 100.0F);
-            
-            for (int i = 0; i < hits.Length; i++)
+        if(_direction.Left) 
         {
-            RaycastHit hit = hits[i];
-                
-            
-            if(hit.collider.gameObject.tag=="Obstacle"&&canMove)
-            {
-                canMove=false;
-                transform.DOLocalMove( new Vector3(hit.collider.transform.position.x,transform.position.y,hit.collider.transform.position.z)+Vector3.forward,passTime );
-                Debug.Log("right");
-                Debug.Log(hit.collider.gameObject.name);
-                Invoke("CanMove",passTime);
-                return;
-            }
-            
+            _direction.Left=false;
+            Move(Vector3.forward);
         }
+
     }
 
+   
+    private void Move(Vector3 direction)
+    {
+        Vector3 rayStart=transform.position + Vector3.up  ;
+        Debug.DrawRay(rayStart,direction,Color.red,5);
+        RaycastHit hit;
+        if(Physics.Raycast(rayStart, direction,out hit, 100.0f))
+        {           
+            Debug.Log(hit.transform.name);
+            if(hit.transform.tag=="Obstacle")
+            {
+                transform.DOMove( hit.transform.position-direction,passTime );
+                //transform.position=hit.transform.position-direction;
+                CheckAvailableWays();
+
+            }
+        }
+            
+        
+    }
     
 
+    private void CheckAvailableWays()
+    { 
+        _direction.Left=WayRay(Vector3.forward);
+        _direction.Right=WayRay(Vector3.back);
+        _direction.Up=WayRay(Vector3.right);
+        _direction.Down=WayRay(Vector3.left);
+    }
     
-    
+    private bool WayRay(Vector3 dir )
+    {
+        Vector3 rayStart=transform.position + Vector3.up ;
+        Debug.DrawRay(rayStart,dir,Color.red,5);
+        RaycastHit hit;
+        
+        if(Physics.Raycast(rayStart, dir,out hit, 1) && hit.transform.tag=="Obstacle" )
+        {
+            return true;
+        }
+        
+        return true;
+    }
         private void OnTriggerEnter(Collider other) 
         {
            
             if(other.tag=="CollectibleStacks")
             {
-                count=transform.childCount;
-                Debug.Log("stack");
+                
+                other.transform.position=new Vector3(transform.position.x,transform.position.y+transform.localScale.y*(count+1),transform.position.z);
                 other.transform.parent=transform;
-                count=transform.childCount;
-                other.transform.position=transform.position+count*Vector3.up*transform.localScale.y;
+               
+                //transform.position=new Vector3(transform.position.x,0.1f*(count+1),transform.position.z);
+                count++;
+                other.tag="Collected";
+                
+               
+
+                
 
             }
         }
 
    
+}
+
+[System.Serializable]
+public class Direction 
+{
+    public bool Up=true;
+    public bool Down=true;
+    public bool Right=true;
+    public bool Left=true;
 }

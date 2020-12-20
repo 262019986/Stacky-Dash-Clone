@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] GridPrefabs;
     public GameObject BasePrefab;
     public Vector3 BaseScale;
+    public GameObject CharacterPrefab;
 
 
 
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
         BasePrefab.transform.localScale=BaseScale;
         Instantiate(BasePrefab,Vector3.zero+Vector3.down/10,Quaternion.identity);
         ArraySpawner.Spawn("Grid",GridPrefabs,Levels[0],1,Vector3.zero,transform);
+        Instantiate(CharacterPrefab,Vector3.zero,Quaternion.Euler(Vector3.right));
         
     }
 
