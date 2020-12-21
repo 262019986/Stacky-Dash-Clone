@@ -36,11 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Game\Scripts\Camera\CineMachine.cs" />
+     <Compile Include="Assets\Game\Scripts\Camera\CineMachineController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Character.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\CollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Collectiblestack.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\IStackable.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\InputController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\StackController.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\UnCollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\Array2D.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\ArraySpawner.cs" />
      <Compile Include="Assets\Game\Scripts\JoystickMovement.cs" />

@@ -10,6 +10,8 @@ TagManager:
   - CollectibleStacks
   - Joystick
   - Collected
+  - base
+  - UnCollectible
   layers:
   - Default
   - TransparentFX

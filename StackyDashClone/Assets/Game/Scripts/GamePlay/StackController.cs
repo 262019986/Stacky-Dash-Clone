@@ -10,6 +10,7 @@ public class StackController : MonoBehaviour
     public int count;
     public Direction _direction=new Direction();
     public float passTime=1.5f;
+    public Vector3 PositionController;
 
 
     void OnEnable()
@@ -39,7 +40,6 @@ public class StackController : MonoBehaviour
     }
 
    
-
    
      private void OnSwipeRight()
     {
@@ -77,6 +77,7 @@ public class StackController : MonoBehaviour
         {
             _direction.Left=false;
             Move(Vector3.forward);
+            Debug.Log("LEFT");
         }
 
     }
@@ -91,9 +92,10 @@ public class StackController : MonoBehaviour
         {           
             Debug.Log(hit.transform.name);
             if(hit.transform.tag=="Obstacle")
-            {
+            {   
+                PositionController=hit.transform.position-direction;
+                passTime=Vector3.Distance(transform.position,hit.transform.position)/10;
                 transform.DOMove( hit.transform.position-direction,passTime );
-                //transform.position=hit.transform.position-direction;
                 CheckAvailableWays();
 
             }
@@ -130,8 +132,11 @@ public class StackController : MonoBehaviour
             if(other.tag=="CollectibleStacks")
             {
                 
-                other.transform.position=new Vector3(transform.position.x,transform.position.y+transform.localScale.y*(count+1),transform.position.z);
+                
+                other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (count+1) , transform.position.z);
                 other.transform.parent=transform;
+
+
                
                 //transform.position=new Vector3(transform.position.x,0.1f*(count+1),transform.position.z);
                 count++;
@@ -142,6 +147,23 @@ public class StackController : MonoBehaviour
                 
 
             }
+
+            if(other.tag=="UnCollectible")
+            {
+                
+                other.tag="base";
+                transform.GetChild(0).parent.transform.position=other.transform.position;
+                transform.GetChild(0).parent=null;
+                count--;
+                for(int i=0;i<transform.childCount;i++)
+                {
+                    transform.GetChild(i).transform.position=new Vector3(transform.position.x,transform.GetChild(i).transform.position.y-0.1f,transform.position.z);
+            
+                }
+
+            
+            }
+            
         }
 
    
