@@ -13,6 +13,12 @@ public class StackController : MonoBehaviour
     public Vector3 PositionController;
 
 
+    private void Start() 
+    {
+        
+        transform.SetParent(null);
+    }
+    
     void OnEnable()
     {
         //Swipe events
@@ -91,7 +97,7 @@ public class StackController : MonoBehaviour
         if(Physics.Raycast(rayStart, direction,out hit, 100.0f))
         {           
             Debug.Log(hit.transform.name);
-            if(hit.transform.tag=="Obstacle")
+            if(hit.transform.tag =="Obstacle")
             {   
                 PositionController=hit.transform.position-direction;
                 passTime=Vector3.Distance(transform.position,hit.transform.position)/10;

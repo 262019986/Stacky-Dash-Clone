@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 //        BasePrefab.transform.localScale=BaseScale;
        // Instantiate(BasePrefab,Vector3.zero+Vector3.down/10,Quaternion.identity);
         ArraySpawner.Spawn("Grid1",GridPrefabs,Levels[0],1,Vector3.down*0.1f,transform);
-        ArraySpawner.Spawn("Grid",GridPrefabs,Levels[1],1,Vector3.zero,transform);
+       // ArraySpawner.Spawn("Grid",GridPrefabs,Levels[1],1,Vector3.zero,transform);
         Instantiate(CharacterPrefab,Vector3.zero,Quaternion.Euler(Vector3.right));
         
     }

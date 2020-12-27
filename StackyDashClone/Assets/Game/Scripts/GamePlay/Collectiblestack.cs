@@ -9,7 +9,7 @@ public class Collectiblestack : MonoBehaviour
    float yDistance=0;
     void Start()
     {
-        
+        transform.SetParent(null);
     }
 
     // Update is called once per frame
