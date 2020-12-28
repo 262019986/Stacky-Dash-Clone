@@ -46,9 +46,9 @@
      <Compile Include="Assets\Game\Scripts\GamePlay\UnCollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\Array2D.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\ArraySpawner.cs" />
-     <Compile Include="Assets\Game\Scripts\JoystickMovement.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\EventManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\InitManager.cs" />
+     <Compile Include="Assets\Game\Scripts\Managers\JoystickMovement.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeEvents.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeManager.cs" />

@@ -121,11 +121,11 @@ public class StackController : MonoBehaviour
     
     private bool WayRay(Vector3 dir )
     {
-        Vector3 rayStart=transform.position + Vector3.up ;
-        Debug.DrawRay(rayStart,dir,Color.red,5);
+        Vector3 rayStart = transform.position + Vector3.up ;
+        Debug.DrawRay(rayStart , dir , Color.red , 5);
         RaycastHit hit;
         
-        if(Physics.Raycast(rayStart, dir,out hit, 1) && hit.transform.tag=="Obstacle" )
+        if(Physics.Raycast(rayStart, dir,out hit, 1) && hit.transform.tag == "Obstacle" )
         {
             return true;
         }
@@ -138,6 +138,8 @@ public class StackController : MonoBehaviour
             if(other.tag=="CollectibleStacks")
             {
                 
+                count++;
+                other.tag="Collected";
                 
                 other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (count+1) , transform.position.z);
                 other.transform.parent=transform;
@@ -145,8 +147,7 @@ public class StackController : MonoBehaviour
 
                
                 //transform.position=new Vector3(transform.position.x,0.1f*(count+1),transform.position.z);
-                count++;
-                other.tag="Collected";
+                
                 
                
 
@@ -158,12 +159,13 @@ public class StackController : MonoBehaviour
             {
                 
                 other.tag="base";
-                transform.GetChild(0).parent.transform.position=other.transform.position;
-                transform.GetChild(0).parent=null;
+                transform.GetChild(0).parent.transform.position = other.transform.position + Vector3.up * transform.localScale.y ;
+                transform.GetChild(0).transform.SetParent(null);
                 count--;
+                
                 for(int i=0;i<transform.childCount;i++)
                 {
-                    transform.GetChild(i).transform.position=new Vector3(transform.position.x,transform.GetChild(i).transform.position.y-0.1f,transform.position.z);
+                    transform.GetChild(i).transform.position=new Vector3(transform.position.x , transform.GetChild(i).transform.position.y -0.1f , transform.position.z);
             
                 }
 

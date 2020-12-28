@@ -44,7 +44,7 @@ public abstract class Array2DEditor : Editor
             newGridSize = EditorGUILayout.Vector2IntField("Grid Size", newGridSize);
             SetBoldDefaultFont(false);
             gridSizeChanged = newGridSize != gridSize.vector2IntValue;
-            wrongSize = (newGridSize.x <= 0 || newGridSize.x >= 15 || newGridSize.y <= 0 || newGridSize.y >= 15);
+            wrongSize = (newGridSize.x <= 0 || newGridSize.x >= 31  || newGridSize.y <= 0 || newGridSize.y >= 31);
 
             GUI.enabled = gridSizeChanged && !wrongSize;
 

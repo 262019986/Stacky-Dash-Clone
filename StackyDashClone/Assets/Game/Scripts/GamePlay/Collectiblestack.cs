@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class Collectiblestack : MonoBehaviour
 {
    private bool matched;
 
-   float yDistance=0;
+   float yDistance=0.1f;
     void Start()
     {
         transform.SetParent(null);
@@ -16,7 +16,9 @@ public class Collectiblestack : MonoBehaviour
     void Update()
     {
         if(matched)
-        {transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x,yDistance,GameObject.FindWithTag("Player").transform.position.z);}
+        {
+            transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x , yDistance , GameObject.FindWithTag("Player").transform.position.z);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -24,7 +26,8 @@ public class Collectiblestack : MonoBehaviour
         if(other.tag=="Player")
         {
             matched=true;
-            yDistance=(other.GetComponent<StackController>().count-1) * transform.localScale.y;
+            
+            yDistance = ( other.GetComponent<StackController>().count -1 ) * transform.localScale.y;
 
         }
 

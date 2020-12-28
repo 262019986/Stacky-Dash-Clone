@@ -630,7 +630,8 @@ MonoBehaviour:
   - {fileID: 782520977368248321, guid: 9f606ab49e88f404fa2aef691e056a07, type: 3}
   - {fileID: 1005757181405806057, guid: 8f9ba81b3f418774d8fdb27d867cd8d1, type: 3}
   - {fileID: 3686231349653831365, guid: 4d3936c4454da2946a197f125eaad944, type: 3}
-  - {fileID: 0}
+  - {fileID: 3686231349653831365, guid: 4d3936c4454da2946a197f125eaad944, type: 3}
+  - {fileID: 8674894034880535992, guid: 8ede03c6c8afa614cbbfc684418f0b47, type: 3}
   - {fileID: 0}
   BaseScale: {x: 10, y: 0.1, z: 8}
   CharacterPrefab: {fileID: 1194655998467597684, guid: 1db2955c3047fb945ac2c8f922cd5638,
@@ -696,7 +697,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3352602, y: 1}
+    m_SensorSize: {x: 1.3342541, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
