@@ -228,10 +228,10 @@
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="clipper_library">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -588,31 +588,31 @@
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

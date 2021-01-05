@@ -16,7 +16,7 @@ public class StackController : MonoBehaviour
     private void Start() 
     {
         
-        transform.SetParent(null);
+        
     }
     
     void OnEnable()
@@ -26,6 +26,13 @@ public class StackController : MonoBehaviour
         SwipeEvents.OnSwipeDown += OnSwipeDown;
         SwipeEvents.OnSwipeLeft += OnSwipeLeft;
         SwipeEvents.OnSwipeRight += OnSwipeRight;
+        EventManager.OnGameStart.AddListener(() => transform.SetParent(null));
+        EventManager.OnUnStack.AddListener (Unstack);
+        EventManager.OnStop.AddListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+
+
+        
+
 
         //Tap events
         
@@ -39,6 +46,11 @@ public class StackController : MonoBehaviour
         SwipeEvents.OnSwipeDown -= OnSwipeDown;
         SwipeEvents.OnSwipeLeft -= OnSwipeLeft;
         SwipeEvents.OnSwipeRight -= OnSwipeRight;
+
+        EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
+        EventManager.OnUnStack.RemoveListener (Unstack);
+        
+        
 
         //Tap Events
         
@@ -91,17 +103,22 @@ public class StackController : MonoBehaviour
    
     private void Move(Vector3 direction)
     {
+        EventManager.OnMove.Invoke();
         Vector3 rayStart=transform.position + Vector3.up  ;
         Debug.DrawRay(rayStart,direction,Color.red,5);
         RaycastHit hit;
-        if(Physics.Raycast(rayStart, direction,out hit, 100.0f))
+        if(Physics.Raycast(rayStart, direction, out hit, 100.0f))
         {           
             Debug.Log(hit.transform.name);
-            if(hit.transform.tag =="Obstacle")
+            if(hit.transform.tag == "Obstacle")
             {   
+                
+                  
                 PositionController=hit.transform.position-direction;
-                passTime=Vector3.Distance(transform.position,hit.transform.position)/10;
+                passTime= Vector3.Distance (transform.position,hit.transform.position)/13;
                 transform.DOMove( hit.transform.position-direction,passTime );
+                
+                
                 CheckAvailableWays();
 
             }
@@ -109,8 +126,20 @@ public class StackController : MonoBehaviour
             
         
     }
+
+    private void Unstack()
+    {
+        
+
+       for(int i=1 ;i<transform.childCount;i++)
+        {
+            transform.GetChild(i).transform.position = new Vector3(transform.position.x , transform.GetChild(i).transform.position.y -0.1f , transform.position.z);
+        }
+
+    }
     
 
+    
     private void CheckAvailableWays()
     { 
         _direction.Left=WayRay(Vector3.forward);
@@ -121,11 +150,11 @@ public class StackController : MonoBehaviour
     
     private bool WayRay(Vector3 dir )
     {
-        Vector3 rayStart=transform.position + Vector3.up ;
-        Debug.DrawRay(rayStart,dir,Color.red,5);
+        Vector3 rayStart = transform.position + Vector3.up ;
+        Debug.DrawRay(rayStart , dir , Color.red , 5);
         RaycastHit hit;
         
-        if(Physics.Raycast(rayStart, dir,out hit, 1) && hit.transform.tag=="Obstacle" )
+        if(Physics.Raycast(rayStart, dir,out hit, 1) && hit.transform.tag == "Obstacle" )
         {
             return true;
         }
@@ -135,22 +164,16 @@ public class StackController : MonoBehaviour
         private void OnTriggerEnter(Collider other) 
         {
            
-            if(other.tag=="CollectibleStacks")
+            if(other.tag == "CollectibleStacks")
             {
-                
-                
-                other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (count+1) , transform.position.z);
-                other.transform.parent=transform;
-
-
-               
-                //transform.position=new Vector3(transform.position.x,0.1f*(count+1),transform.position.z);
+                EventManager.OnStack.Invoke();
                 count++;
-                other.tag="Collected";
-                
-               
+                other.tag="Collected";  
+                other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (count) , transform.position.z);
+                other.transform.parent=transform;
+                EventManager.OnStop.Invoke();
 
-                
+
 
             }
 
@@ -158,16 +181,17 @@ public class StackController : MonoBehaviour
             {
                 
                 other.tag="base";
-                transform.GetChild(0).parent.transform.position=other.transform.position;
-                transform.GetChild(0).parent=null;
                 count--;
-                for(int i=0;i<transform.childCount;i++)
-                {
-                    transform.GetChild(i).transform.position=new Vector3(transform.position.x,transform.GetChild(i).transform.position.y-0.1f,transform.position.z);
-            
-                }
+                EventManager.OnUnStack.Invoke();
+                transform.GetChild(1).position = other.transform.position + Vector3.up * transform.localScale.y ;
+                transform.GetChild(1).transform.SetParent(null);
+ 
+            }
 
-            
+            if(other.tag == "Obstacle")
+            {
+               
+                
             }
             
         }
