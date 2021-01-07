@@ -49,6 +49,7 @@ public class StackController : MonoBehaviour
 
         EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
         EventManager.OnUnStack.RemoveListener (Unstack);
+         EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
         
         
 
@@ -127,11 +128,16 @@ public class StackController : MonoBehaviour
         
     }
 
+    IEnumerator AutomaticMove(Vector3 direction)
+    {
+        yield return new WaitForSeconds(0.05f);
+        Move(direction);
+    }
     private void Unstack()
     {
         
 
-       for(int i=1 ;i<transform.childCount;i++)
+       for(int i=2;i<transform.childCount;i++)
         {
             transform.GetChild(i).transform.position = new Vector3(transform.position.x , transform.GetChild(i).transform.position.y -0.1f , transform.position.z);
         }
@@ -183,8 +189,8 @@ public class StackController : MonoBehaviour
                 other.tag="base";
                 count--;
                 EventManager.OnUnStack.Invoke();
-                transform.GetChild(1).position = other.transform.position + Vector3.up * transform.localScale.y ;
-                transform.GetChild(1).transform.SetParent(null);
+                transform.GetChild(2).position = other.transform.position + Vector3.up * transform.localScale.y ;
+                transform.GetChild(2).transform.SetParent(null);
  
             }
 
@@ -192,6 +198,30 @@ public class StackController : MonoBehaviour
             {
                
                 
+            }
+
+            if(other.CompareTag("DownArrow"))
+            {
+                
+                StartCoroutine(AutomaticMove(Vector3.left));
+            }
+
+            if(other.CompareTag("UpArrow"))
+            {
+                
+                StartCoroutine(AutomaticMove(Vector3.right));
+            }
+
+            if(other.CompareTag("LeftArrow"))
+            {
+                
+                StartCoroutine(AutomaticMove(Vector3.forward));
+            }
+
+            if(other.CompareTag("RightArrow"))
+            {
+                
+               StartCoroutine(AutomaticMove(Vector3.back));
             }
             
         }

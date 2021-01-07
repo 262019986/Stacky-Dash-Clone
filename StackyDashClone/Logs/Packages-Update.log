@@ -51,3 +51,11 @@ Update Mode: resetToDefaultDependencies
 
 The following packages were removed:
   com.unity.cinemachine@2.7.1
+
+=== Wed Jan  6 09:02:06 2021
+
+Packages were changed.
+Update Mode: resetToDefaultDependencies
+
+The following packages were removed:
+  com.unity.cinemachine@2.7.1

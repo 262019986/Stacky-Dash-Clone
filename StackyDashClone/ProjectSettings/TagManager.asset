@@ -12,6 +12,11 @@ TagManager:
   - Collected
   - base
   - UnCollectible
+  - FxTemporaire
+  - DownArrow
+  - UpArrow
+  - LeftArrow
+  - RightArrow
   layers:
   - Default
   - TransparentFX

@@ -39,8 +39,12 @@
      <Compile Include="Assets\Game\Scripts\Camera\CineMachineController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\AnimationManager.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Character.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\CollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Collectiblestack.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\IStackable.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\InputController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\StackController.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\UnCollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\Array2D.cs" />
      <Compile Include="Assets\Game\Scripts\Grid View\ArraySpawner.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\AudioManager.cs" />
@@ -49,9 +53,24 @@
      <Compile Include="Assets\Game\Scripts\Managers\JoystickMovement.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\ParticleManager.cs" />
+     <Compile Include="Assets\Game\Scripts\Managers\ScoreManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\Singleton.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeEvents.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeManager.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_Translate.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutodestructWhenNoChildren.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_InspectorHelp.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_ShurikenThreadFix.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Spawn System\CFX_SpawnSystem.cs" />
      <Compile Include="Assets\Touch Controller Kit Lite\Demo Scene &amp; Assets\TouchControllerGameManager.cs" />
      <Compile Include="Assets\Touch Controller Kit Lite\ExampleImplementation.cs" />
      <Compile Include="Assets\Touch Controller Kit Lite\Scripts\Tilt Controller\TiltController.cs" />
@@ -59,9 +78,16 @@
      <Compile Include="Assets\Touch Controller Kit Lite\Scripts\Zoom And Pan\OrthoZoomAndPan.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Ubershader.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFXM_MobileParticleAB_Alpha8.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Course Library\_Source_Files\Materials\UnlitVertexColour_Alpha.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR.cginc" />
+     <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX (legacy)\CartoonFX Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -69,12 +95,18 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\Readme Cartoon FX Remaster.txt" />
+     <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Procedural Ring.shader" />
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_URP.cginc" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
@@ -261,10 +293,10 @@
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="clipper_library">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -621,31 +653,31 @@
         <HintPath>C:/Program Files/2019.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/Stacky-Dash-Clone-GamePlay9/StackyDashClone/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+        <HintPath>E:/Unity/Github/Stacky-Dash-Clone/StackyDashClone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -662,6 +694,26 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
       <Name>UnityEditor.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{4adb5380-b97c-7c44-8c2a-b7e122acc2fc}</Project>
+      <Name>CFXRRuntime</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{2a45a8fa-c8c6-19cf-b0a4-165f379358c6}</Project>
+      <Name>CFXREditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{45c45b69-8e23-704b-a7be-a5acafc6b872}</Project>
+      <Name>CFXRDemo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemoEditor.csproj">
+      <Project>{93797ac0-eac6-150c-f4c9-9da665c8b5ef}</Project>
+      <Name>CFXRDemoEditor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
