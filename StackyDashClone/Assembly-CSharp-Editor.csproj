@@ -650,16 +650,6 @@
       <Name>Assembly-CSharp</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{b12430b1-bfaa-ee5b-ffe3-b052d12916c6}</Project>
-      <Name>UnityEngine.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
-      <Name>UnityEditor.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="CFXRRuntime.csproj">
       <Project>{4adb5380-b97c-7c44-8c2a-b7e122acc2fc}</Project>
       <Name>CFXRRuntime</Name>
@@ -675,9 +665,19 @@
       <Name>CFXRDemo</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{b12430b1-bfaa-ee5b-ffe3-b052d12916c6}</Project>
+      <Name>UnityEngine.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="CFXRDemoEditor.csproj">
       <Project>{93797ac0-eac6-150c-f4c9-9da665c8b5ef}</Project>
       <Name>CFXRDemoEditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
+      <Name>UnityEditor.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

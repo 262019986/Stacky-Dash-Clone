@@ -441,7 +441,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5635359, y: 1}
+    m_SensorSize: {x: 0.562212, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 1838969746}
   - component: {fileID: 1838969747}
   - component: {fileID: 1838969748}
+  - component: {fileID: 1838969749}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1035,9 +1036,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e188af4b62b774d4882401850373ea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Levels:
-  - {fileID: 11400000, guid: 41e2474cd89507e43a013c7eed086389, type: 2}
-  - {fileID: 0}
+  Level1:
+  - {fileID: 11400000, guid: d5e61774ad2f17940930a01c8588f809, type: 2}
+  - {fileID: 11400000, guid: f2a1c9943ea5829448c03671fd3ce6d7, type: 2}
+  - {fileID: 11400000, guid: 085595560a41983429d79148ef8d01b1, type: 2}
   GridPrefabs:
   - {fileID: 5524316465256375459, guid: 4f88a4e538123de45868406eb9d39bae, type: 3}
   - {fileID: 782520977368248321, guid: 9f606ab49e88f404fa2aef691e056a07, type: 3}
@@ -1049,9 +1051,15 @@ MonoBehaviour:
   - {fileID: 782520977368248321, guid: 4b766a0efdb068b47b6d2620a6e7d0e2, type: 3}
   - {fileID: 782520977368248321, guid: 23d47dc2cc2aca5419e88abe64e81fd4, type: 3}
   - {fileID: 782520977368248321, guid: d28627a1c7a545b4eb6252e55436629f, type: 3}
+  - {fileID: 782520977368248321, guid: 411091d97c908fa479a7107c84b83977, type: 3}
+  GridPrefabs2:
+  - {fileID: 0}
   BaseScale: {x: 10, y: 0.1, z: 8}
   CharacterPrefab: {fileID: 1194655998467597684, guid: 1db2955c3047fb945ac2c8f922cd5638,
     type: 3}
+  Length1: 1.2
+  Length2: 0
+  Length3: 0
 --- !u!4 &1838969745
 Transform:
   m_ObjectHideFlags: 0
@@ -1107,6 +1115,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da41e8dcd81a9740859d0d8ee026899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1838969749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838969743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5db64d181a37041b7f2c4c0b14fbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
 --- !u!1 &1898818879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1175,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5635359, y: 1}
+    m_SensorSize: {x: 0.562212, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1

@@ -12,6 +12,7 @@ public static class EventManager
   public static UnityEvent OnGameEnd = new UnityEvent();
   public static UnityEvent OnLevelStart = new UnityEvent();
   public static UnityEvent OnLevelEnd = new UnityEvent();
+  public static UnityEvent OnPass = new UnityEvent();
 
  
 

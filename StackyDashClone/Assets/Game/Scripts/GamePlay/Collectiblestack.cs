@@ -10,26 +10,24 @@ public class Collectiblestack : MonoBehaviour
     void Start()
     {
         transform.SetParent(null);
+        
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(matched)
-        {
-            transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x , yDistance , GameObject.FindWithTag("Player").transform.position.z);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        
-        if(other.tag == "Player")
-        {
-            matched=true;
-            
-            yDistance = ( other.GetComponent<StackController>().count - 1 ) * transform.localScale.y;
-
-        }
-
-    }
+   private void Update() 
+   {
+        RaycastHit hit;
+       if( Physics.Raycast(transform.position , Vector3.forward , out hit, 1.1f ) && transform.CompareTag("Collected"))
+       {
+           if(hit.transform.tag == "Pass")
+           { 
+               Debug.Log("Pass Detected");
+               EventManager.OnPass.Invoke();
+               gameObject.AddComponent<StackController>();
+               gameObject.tag ="Player";
+               Destroy(this);
+               
+           }
+       }
+   }
 }

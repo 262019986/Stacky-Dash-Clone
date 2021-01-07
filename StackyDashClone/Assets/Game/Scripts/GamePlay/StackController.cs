@@ -7,7 +7,7 @@ public class StackController : MonoBehaviour
 {
 
     
-    public int count;
+  
     public Direction _direction=new Direction();
     public float passTime=1.5f;
     public Vector3 PositionController;
@@ -29,6 +29,7 @@ public class StackController : MonoBehaviour
         EventManager.OnGameStart.AddListener(() => transform.SetParent(null));
         EventManager.OnUnStack.AddListener (Unstack);
         EventManager.OnStop.AddListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+        EventManager.OnPass.AddListener(()=> Destroy(this));
 
 
         
@@ -49,7 +50,8 @@ public class StackController : MonoBehaviour
 
         EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
         EventManager.OnUnStack.RemoveListener (Unstack);
-         EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+        EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+        EventManager.OnPass.RemoveListener(()=> Destroy(this.gameObject, passTime));
         
         
 
@@ -111,18 +113,29 @@ public class StackController : MonoBehaviour
         if(Physics.Raycast(rayStart, direction, out hit, 100.0f))
         {           
             Debug.Log(hit.transform.name);
+            if(hit.transform.tag == " Pass")
+            {
+                transform.DOJump(hit.transform.position , 2f ,3,2);
+                GameManager.Instance.count=0;
+                return;    
+               
+            }
+
             if(hit.transform.tag == "Obstacle")
             {   
                 
                   
                 PositionController=hit.transform.position-direction;
                 passTime= Vector3.Distance (transform.position,hit.transform.position)/13;
-                transform.DOMove( hit.transform.position-direction,passTime );
+                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , passTime );
                 
                 
                 CheckAvailableWays();
 
             }
+
+            
+
         }
             
         
@@ -173,9 +186,9 @@ public class StackController : MonoBehaviour
             if(other.tag == "CollectibleStacks")
             {
                 EventManager.OnStack.Invoke();
-                count++;
+                GameManager.Instance.count++;
                 other.tag="Collected";  
-                other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (count) , transform.position.z);
+                other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (GameManager.Instance.count) , transform.position.z);
                 other.transform.parent=transform;
                 EventManager.OnStop.Invoke();
 
@@ -187,7 +200,7 @@ public class StackController : MonoBehaviour
             {
                 
                 other.tag="base";
-                count--;
+                GameManager.Instance.count--;
                 EventManager.OnUnStack.Invoke();
                 transform.GetChild(2).position = other.transform.position + Vector3.up * transform.localScale.y ;
                 transform.GetChild(2).transform.SetParent(null);

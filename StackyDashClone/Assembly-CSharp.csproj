@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Game\Scripts\Camera\CineMachineController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\AnimationManager.cs" />
+     <Compile Include="Assets\Game\Scripts\GamePlay\Base.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Character.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\CollectibleBase.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Collectiblestack.cs" />
@@ -49,6 +50,7 @@
      <Compile Include="Assets\Game\Scripts\Grid View\ArraySpawner.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\EventManager.cs" />
+     <Compile Include="Assets\Game\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\InitManager.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\JoystickMovement.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\LevelManager.cs" />
@@ -686,16 +688,6 @@
       <Name>Assembly-CSharp-firstpass</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{b12430b1-bfaa-ee5b-ffe3-b052d12916c6}</Project>
-      <Name>UnityEngine.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
-      <Name>UnityEditor.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="CFXRRuntime.csproj">
       <Project>{4adb5380-b97c-7c44-8c2a-b7e122acc2fc}</Project>
       <Name>CFXRRuntime</Name>
@@ -711,9 +703,19 @@
       <Name>CFXRDemo</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{b12430b1-bfaa-ee5b-ffe3-b052d12916c6}</Project>
+      <Name>UnityEngine.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="CFXRDemoEditor.csproj">
       <Project>{93797ac0-eac6-150c-f4c9-9da665c8b5ef}</Project>
       <Name>CFXRDemoEditor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{f2d67754-0640-61e8-3a0a-d289a692d6c2}</Project>
+      <Name>UnityEditor.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
