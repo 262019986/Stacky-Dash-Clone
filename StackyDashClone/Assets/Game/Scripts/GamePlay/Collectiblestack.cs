@@ -7,6 +7,16 @@ public class Collectiblestack : MonoBehaviour
    private bool matched;
 
    float yDistance=0.1f;
+
+   private void OnEnable() 
+   {
+        EventManager.OnPass.AddListener(()=> transform.SetParent(null));    
+   }
+
+   private void OnDisable() 
+   {
+       EventManager.OnPass.RemoveListener(()=> transform.SetParent(null)); 
+   }
     void Start()
     {
         transform.SetParent(null);
@@ -21,13 +31,21 @@ public class Collectiblestack : MonoBehaviour
        {
            if(hit.transform.tag == "Pass")
            { 
-               Debug.Log("Pass Detected");
-               EventManager.OnPass.Invoke();
-               gameObject.AddComponent<StackController>();
-               gameObject.tag ="Player";
-               Destroy(this);
-               
+              
+               StartCoroutine(SetPass());
+               hit.transform.tag="CollectibleStacks";
            }
        }
    }
+
+   IEnumerator SetPass()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Pass Detected");
+        EventManager.OnPass.Invoke();
+        yield return new WaitForSeconds(0.1f);
+        transform.position = new Vector3(transform.position.x , 0 ,transform.position.z);
+        GameManager.Instance.count=0;
+        
+    }
 }

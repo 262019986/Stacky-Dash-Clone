@@ -29,7 +29,7 @@ public class StackController : MonoBehaviour
         EventManager.OnGameStart.AddListener(() => transform.SetParent(null));
         EventManager.OnUnStack.AddListener (Unstack);
         EventManager.OnStop.AddListener( () => Destroy(transform.GetChild(0) , 1f )) ;
-        EventManager.OnPass.AddListener(()=> Destroy(this));
+        EventManager.OnPass.AddListener(()=> transform.position = new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z));
 
 
         
@@ -51,7 +51,7 @@ public class StackController : MonoBehaviour
         EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
         EventManager.OnUnStack.RemoveListener (Unstack);
         EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
-        EventManager.OnPass.RemoveListener(()=> Destroy(this.gameObject, passTime));
+        EventManager.OnPass.RemoveListener(()=> transform.position = new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z));
         
         
 
@@ -110,12 +110,13 @@ public class StackController : MonoBehaviour
         Vector3 rayStart=transform.position + Vector3.up  ;
         Debug.DrawRay(rayStart,direction,Color.red,5);
         RaycastHit hit;
-        if(Physics.Raycast(rayStart, direction, out hit, 100.0f))
+        
+        if(Physics.Raycast(rayStart , direction , out hit , 100.0f))
         {           
             Debug.Log(hit.transform.name);
             if(hit.transform.tag == " Pass")
             {
-                transform.DOJump(hit.transform.position , 2f ,3,2);
+                transform.DOJump(hit.transform.position , 2f , 3 , 2);
                 GameManager.Instance.count=0;
                 return;    
                
@@ -125,7 +126,7 @@ public class StackController : MonoBehaviour
             {   
                 
                   
-                PositionController=hit.transform.position-direction;
+                PositionController = hit.transform.position - direction;
                 passTime= Vector3.Distance (transform.position,hit.transform.position)/13;
                 transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , passTime );
                 
@@ -185,8 +186,10 @@ public class StackController : MonoBehaviour
            
             if(other.tag == "CollectibleStacks")
             {
+                Debug.Log("Collected");
                 EventManager.OnStack.Invoke();
                 GameManager.Instance.count++;
+                GameManager.Instance.CharacterCount++;
                 other.tag="Collected";  
                 other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (GameManager.Instance.count) , transform.position.z);
                 other.transform.parent=transform;
