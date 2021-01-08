@@ -11,6 +11,7 @@ public class ParticleManager : Singleton <ParticleManager>
     private void OnEnable() 
     {
         EventManager.OnStop.AddListener(PlayRingEffect);
+       
 
     }
 
@@ -29,5 +30,10 @@ public class ParticleManager : Singleton <ParticleManager>
         Debug.Log("RingEffectPlayed");
         Instantiate( WaterParticle , GameObject.FindWithTag("Player").transform.position + Vector3.up/2 , Quaternion.identity , GameObject.FindWithTag("Player").transform );
     
+    }
+
+    private void TurnParticle(Vector3 direction)
+    {
+        GameObject.FindWithTag("Player").transform.GetChild(0).transform.rotation = Quaternion.Euler(direction);
     }
 }

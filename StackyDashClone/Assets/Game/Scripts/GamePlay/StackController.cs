@@ -68,6 +68,7 @@ public class StackController : MonoBehaviour
         {
             _direction.Right=false;
             Move(Vector3.back);
+            
         }
     }
 

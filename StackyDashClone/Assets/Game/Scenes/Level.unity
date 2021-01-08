@@ -441,7 +441,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.562212, y: 1}
+    m_SensorSize: {x: 0.5635838, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   - {fileID: 782520977368248321, guid: 9f606ab49e88f404fa2aef691e056a07, type: 3}
   - {fileID: 1005757181405806057, guid: 8f9ba81b3f418774d8fdb27d867cd8d1, type: 3}
   - {fileID: 0}
-  - {fileID: 3686231349653831365, guid: 4d3936c4454da2946a197f125eaad944, type: 3}
+  - {fileID: 782520977368248321, guid: 19baebfbc9a207b45a62052267a98f0d, type: 3}
   - {fileID: 8674894034880535992, guid: 8ede03c6c8afa614cbbfc684418f0b47, type: 3}
   - {fileID: 782520977368248321, guid: 5231c162d5421df449e92c10d96d3cb9, type: 3}
   - {fileID: 782520977368248321, guid: 4b766a0efdb068b47b6d2620a6e7d0e2, type: 3}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WindTrail: {fileID: 50298051971334877, guid: 98dc8417d3ab5af44bc5fd1071080502, type: 3}
-  WaterParticle: {fileID: 427609689521222444, guid: ccee8ed7fcb212044b7a8034e6e9c04e,
+  WaterParticle: {fileID: 1858714725665292, guid: 3ccd54180d4b3e54eaf3027dcaf14742,
     type: 3}
   SandTrail: {fileID: 8468553477969712528, guid: e9e67ba0bdecf284a9acbc7b5e091ee9,
     type: 3}
@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
+  CharacterCount: 0
 --- !u!1 &1898818879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1176,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.562212, y: 1}
+    m_SensorSize: {x: 0.5635838, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1

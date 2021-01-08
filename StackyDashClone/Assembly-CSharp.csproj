@@ -36,6 +36,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEButtonScript.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEDestoryTimed.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\ParticleEffectsLibrary.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\UICanvasManager.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
+     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
+     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
      <Compile Include="Assets\Game\Scripts\Camera\CineMachineController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\AnimationManager.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Base.cs" />
@@ -90,6 +103,7 @@
      <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX (legacy)\CartoonFX Readme.txt" />
+     <None Include="Assets\Epic Toon FX\ETFX Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
