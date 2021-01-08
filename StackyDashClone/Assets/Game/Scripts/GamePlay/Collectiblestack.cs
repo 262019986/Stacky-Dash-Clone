@@ -44,7 +44,7 @@ public class Collectiblestack : MonoBehaviour
         Debug.Log("Pass Detected");
         EventManager.OnPass.Invoke();
         yield return new WaitForSeconds(0.1f);
-        //transform.position = new Vector3(transform.position.x , 0 ,transform.position.z);
+        transform.position = new Vector3(transform.position.x , 0 ,transform.position.z);
         GameManager.Instance.count=0;
         
     }

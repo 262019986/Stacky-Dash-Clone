@@ -15,7 +15,8 @@ public class StackController : MonoBehaviour
 
     private void Start() 
     {
-        
+        EventManager.OnLevelStart.Invoke();
+        transform.SetParent(null);
         
     }
     
@@ -29,9 +30,7 @@ public class StackController : MonoBehaviour
         EventManager.OnGameStart.AddListener(() => transform.SetParent(null));
         EventManager.OnUnStack.AddListener (Unstack);
         EventManager.OnStop.AddListener( () => Destroy(transform.GetChild(0) , 1f )) ;
-        EventManager.OnPass.AddListener(()=> transform.position = new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z));
-
-
+        EventManager.OnPass.AddListener (()=> transform.DOMove( new Vector3(transform.position.x , transform.position.y + GameManager.Instance.count * transform.localScale.y  , transform.position.z) , 0.1f ).OnComplete(()=> transform.DOMove(transform.position + Vector3.forward ,0.1F)));
         
 
 
@@ -51,7 +50,7 @@ public class StackController : MonoBehaviour
         EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
         EventManager.OnUnStack.RemoveListener (Unstack);
         EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
-        EventManager.OnPass.RemoveListener(()=> transform.position = new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z));
+        EventManager.OnPass.RemoveListener (()=> transform.DOMove( new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z) , 0.1f ).OnComplete(()=> transform.DOMove(transform.position + Vector3.forward ,0.1F)));
         
         
 
@@ -67,7 +66,8 @@ public class StackController : MonoBehaviour
         if(_direction.Right)
         {
             _direction.Right=false;
-            Move(Vector3.back);
+            
+            Move(Vector3.right);
             
         }
     }
@@ -77,7 +77,8 @@ public class StackController : MonoBehaviour
        if(_direction.Up)
        {
             _direction.Up=false;
-            Move(Vector3.right);
+            Move(Vector3.forward);
+            
        }
     }
 
@@ -88,7 +89,8 @@ public class StackController : MonoBehaviour
         if(_direction.Down)
         {
             _direction.Down=false;
-             Move(Vector3.left);
+             
+             Move(Vector3.back);
         }
             
     }
@@ -98,7 +100,8 @@ public class StackController : MonoBehaviour
         if(_direction.Left) 
         {
             _direction.Left=false;
-            Move(Vector3.forward);
+            
+            Move(Vector3.left);
             Debug.Log("LEFT");
         }
 
@@ -143,6 +146,7 @@ public class StackController : MonoBehaviour
         
     }
 
+   
     IEnumerator AutomaticMove(Vector3 direction)
     {
         yield return new WaitForSeconds(0.05f);
@@ -151,8 +155,8 @@ public class StackController : MonoBehaviour
     private void Unstack()
     {
         
-
-       for(int i=2;i<transform.childCount;i++)
+        EventManager.OnLevelEnd.Invoke();
+        for(int i=2;i<transform.childCount;i++)
         {
             transform.GetChild(i).transform.position = new Vector3(transform.position.x , transform.GetChild(i).transform.position.y -0.1f , transform.position.z);
         }
@@ -205,9 +209,11 @@ public class StackController : MonoBehaviour
                 
                 other.tag="base";
                 GameManager.Instance.count--;
+                GameManager.Instance.CharacterCount--;
                 EventManager.OnUnStack.Invoke();
                 transform.GetChild(2).position = other.transform.position + Vector3.up * transform.localScale.y ;
                 transform.GetChild(2).transform.SetParent(null);
+                transform.GetChild(2).tag = "Collected";
  
             }
 

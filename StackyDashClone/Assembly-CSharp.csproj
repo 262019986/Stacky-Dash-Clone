@@ -49,6 +49,7 @@
      <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
      <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
      <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
+     <Compile Include="Assets\Game\Scripts\Camera\Cam2.cs" />
      <Compile Include="Assets\Game\Scripts\Camera\CineMachineController.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\AnimationManager.cs" />
      <Compile Include="Assets\Game\Scripts\GamePlay\Base.cs" />

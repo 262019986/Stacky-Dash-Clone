@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationManager : Singleton<AnimationManager>
 {
     private Animator animator;
-    public Animator Animator
+    /*public Animator Animator
 
     {
         get
@@ -16,19 +16,19 @@ public class AnimationManager : Singleton<AnimationManager>
             }
             return animator;
         }
-    }
+    }*/
 
 
     
-    private void OnEnable() 
+    /*private void OnEnable() 
     {
-        EventManager.OnStop.AddListener(() => Animator.SetTrigger("StopMovement"));
+       /* EventManager.OnLevelEnd.AddListener(() => Animator.SetTrigger("StopMovement"));
         
     }
 
     private void OnDisable() 
     {
-        EventManager.OnStop.RemoveListener(() => Animator.SetTrigger("StopMovement"));
-    }
+        EventManager.OnLevelEnd.RemoveListener(() => Animator.SetTrigger("StopMovement"));
+    }*/
     
 }

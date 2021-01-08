@@ -6,4 +6,16 @@ public class GameManager : Singleton<GameManager>
 {
     public float count;
     public float CharacterCount;
+   
+    private void Awake() 
+    {
+        
+
+    }
+    private void Start() 
+    {
+        EventManager.OnGameStart.Invoke();
+    }   
+
+   
 }

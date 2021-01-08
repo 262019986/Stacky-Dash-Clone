@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
         
         
         transform.parent = GameObject.FindWithTag("Player").transform;
+        
 
     }
     private void Update() 
@@ -40,7 +41,7 @@ public class Character : MonoBehaviour
 
     public void AdjustCharaterPos()
     {
-        transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x , (GameManager.Instance.CharacterCount+1)*0.1f + 5.05f  , GameObject.FindWithTag("Player").transform.position.z);
+        transform.position=new Vector3(GameObject.FindWithTag("Player").transform.position.x , (GameManager.Instance.CharacterCount)*0.1f + 5.05f  , GameObject.FindWithTag("Player").transform.position.z);
         
     }
 
