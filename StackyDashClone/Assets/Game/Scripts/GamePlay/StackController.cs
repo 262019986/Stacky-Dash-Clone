@@ -29,7 +29,7 @@ public class StackController : MonoBehaviour
         SwipeEvents.OnSwipeRight += OnSwipeRight;
         EventManager.OnGameStart.AddListener(() => transform.SetParent(null));
         EventManager.OnUnStack.AddListener (Unstack);
-        EventManager.OnStop.AddListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+        EventManager.OnStop.AddListener( ()=> StartCoroutine(SwingOnStop())) ;
         EventManager.OnPass.AddListener (()=> transform.DOMove( new Vector3(transform.position.x , transform.position.y + GameManager.Instance.count * transform.localScale.y  , transform.position.z) , 0.1f ).OnComplete(()=> transform.DOMove(transform.position + Vector3.forward ,0.1F)));
         
 
@@ -49,7 +49,7 @@ public class StackController : MonoBehaviour
 
         EventManager.OnGameStart.RemoveListener(() => transform.SetParent(null));
         EventManager.OnUnStack.RemoveListener (Unstack);
-        EventManager.OnStop.RemoveListener( () => Destroy(transform.GetChild(0) , 1f )) ;
+        EventManager.OnStop.RemoveListener( ()=> StartCoroutine(SwingOnStop())) ;
         EventManager.OnPass.RemoveListener (()=> transform.DOMove( new Vector3(transform.position.x , transform.position.y + GameManager.Instance.CharacterCount * transform.localScale.y  , transform.position.z) , 0.1f ).OnComplete(()=> transform.DOMove(transform.position + Vector3.forward ,0.1F)));
         
         
@@ -131,8 +131,8 @@ public class StackController : MonoBehaviour
                 
                   
                 PositionController = hit.transform.position - direction;
-                passTime= Vector3.Distance (transform.position,hit.transform.position)/13;
-                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , passTime );
+                passTime= Vector3.Distance (transform.position,hit.transform.position)/20;
+                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , passTime ).OnComplete(()=> EventManager.OnStop.Invoke());
                 
                 
                 CheckAvailableWays();
@@ -146,6 +146,15 @@ public class StackController : MonoBehaviour
         
     }
 
+    IEnumerator SwingOnStop()
+    {
+        
+        transform.DORotate(new Vector3(0.4f,0,0.4f),0.1f);
+        yield return new WaitForSeconds(0.1f);
+        transform.DORotate(new Vector3(-0.4f,0,-0.4f),0.1F);
+        yield return new WaitForSeconds(0.1F);
+        transform.DORotate(new Vector3(0,0,0),0.1f);
+    }
    
     IEnumerator AutomaticMove(Vector3 direction)
     {
@@ -156,6 +165,7 @@ public class StackController : MonoBehaviour
     {
         
         EventManager.OnLevelEnd.Invoke();
+        Debug.Log("Unstack");
         for(int i=2;i<transform.childCount;i++)
         {
             transform.GetChild(i).transform.position = new Vector3(transform.position.x , transform.GetChild(i).transform.position.y -0.1f , transform.position.z);
@@ -198,23 +208,23 @@ public class StackController : MonoBehaviour
                 other.tag="Collected";  
                 other.transform.position=new Vector3(transform.position.x , transform.position.y + transform.localScale.y * (GameManager.Instance.count) , transform.position.z);
                 other.transform.parent=transform;
-                EventManager.OnStop.Invoke();
+                
 
 
 
             }
 
             if(other.tag=="UnCollectible")
-            {
-                
+            {  
                 other.tag="base";
                 GameManager.Instance.count--;
                 GameManager.Instance.CharacterCount--;
                 EventManager.OnUnStack.Invoke();
-                transform.GetChild(2).position = other.transform.position + Vector3.up * transform.localScale.y ;
-                transform.GetChild(2).transform.SetParent(null);
-                transform.GetChild(2).tag = "Collected";
- 
+                Transform UnStackObject = transform.GetChild(2);
+                UnStackObject.DOMove ( other.transform.position + Vector3.up * transform.localScale.y *2 , 0.4f).OnComplete(()=> UnStackObject.DOMove(other.transform.position +Vector3.up * transform.localScale.y , 0.4f) );
+                UnStackObject.transform.SetParent(null);
+                UnStackObject.tag = "Collected";
+
             }
 
             if(other.tag == "Obstacle")
