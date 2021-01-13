@@ -142,7 +142,7 @@ public class StackController : MonoBehaviour
             if(hit.transform.tag == "Final")
             {   
                 Debug.Log("fİNAL");
-                GameManager.Instance.passTime  = 2;
+                GameManager.Instance.passTime  =5;
                 PositionController = hit.transform.position - direction;
                 
                 transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , GameManager.Instance.passTime ).OnComplete(()=> EventManager.OnStop.Invoke());
