@@ -9,29 +9,22 @@ public class CineMachineController : MonoBehaviour
  
     
     private GameObject tFollowTarget;
-    private CinemachineStateDrivenCamera StateDrivenCamera;
-    private CinemachineStateDrivenCamera stateDrivenCamera
-    {
-        get
-        {
-            if(StateDrivenCamera == null)
-            {
-                StateDrivenCamera = GetComponent<CinemachineStateDrivenCamera>();
-            }
-            return StateDrivenCamera;
-        }
-    }
+    public CinemachineVirtualCamera vCam1;
+    public CinemachineVirtualCamera vCam2;
+    
 
     private void OnEnable() 
     {
-        EventManager.OnGameStart.AddListener(SetStateDrivenCam );
+        EventManager.OnGameStart.AddListener(SetVirtualCam );
+        EventManager.OnLevelEnd.AddListener(()=> vCam1.enabled=false);
          
         
     }
 
     private void OnDisable() 
     {
-        EventManager.OnGameStart.RemoveListener(SetStateDrivenCam); 
+        EventManager.OnGameStart.RemoveListener(SetVirtualCam); 
+        EventManager.OnLevelEnd.RemoveListener(()=> vCam1.enabled=false);
            
     }
     
@@ -43,10 +36,11 @@ public class CineMachineController : MonoBehaviour
         
     }
 
-    private void SetStateDrivenCam()
+    private void SetVirtualCam()
     {
-        stateDrivenCamera.Follow = FindObjectOfType<StackController>().transform;
-        stateDrivenCamera.m_AnimatedTarget = FindObjectOfType<Character>().GetComponent<Animator>();
+        vCam1.Follow = FindObjectOfType<Character>().transform;
+        vCam2.Follow = FindObjectOfType<Character>().transform;
+        
     }
  
    

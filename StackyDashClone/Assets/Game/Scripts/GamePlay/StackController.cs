@@ -9,7 +9,7 @@ public class StackController : MonoBehaviour
     
   
     public Direction _direction=new Direction();
-    public float passTime=1.5f;
+    
     public Vector3 PositionController;
 
 
@@ -115,7 +115,7 @@ public class StackController : MonoBehaviour
         Debug.DrawRay(rayStart,direction,Color.red,5);
         RaycastHit hit;
         
-        if(Physics.Raycast(rayStart , direction , out hit , 100.0f))
+        if(Physics.Raycast(rayStart , direction , out hit , 500.0f))
         {           
             Debug.Log(hit.transform.name);
             if(hit.transform.tag == " Pass")
@@ -131,12 +131,21 @@ public class StackController : MonoBehaviour
                 
                   
                 PositionController = hit.transform.position - direction;
-                passTime= Vector3.Distance (transform.position,hit.transform.position)/20;
-                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , passTime ).OnComplete(()=> EventManager.OnStop.Invoke());
+                GameManager.Instance.passTime= Vector3.Distance (transform.position,hit.transform.position)/20;
+                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , GameManager.Instance.passTime ).OnComplete(()=> EventManager.OnStop.Invoke());
                 
                 
                 CheckAvailableWays();
 
+            }
+
+            if(hit.transform.tag == "Final")
+            {   
+                Debug.Log("fİNAL");
+                GameManager.Instance.passTime  = 2;
+                PositionController = hit.transform.position - direction;
+                
+                transform.DOMove( new Vector3(hit.transform.position.x , transform.position.y , hit.transform.position.z) -direction , GameManager.Instance.passTime ).OnComplete(()=> EventManager.OnStop.Invoke());
             }
 
             
@@ -149,11 +158,23 @@ public class StackController : MonoBehaviour
     IEnumerator SwingOnStop()
     {
         
+        
         transform.DORotate(new Vector3(0.4f,0,0.4f),0.1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds( 0.1f);
         transform.DORotate(new Vector3(-0.4f,0,-0.4f),0.1F);
-        yield return new WaitForSeconds(0.1F);
-        transform.DORotate(new Vector3(0,0,0),0.1f);
+        yield return new WaitForSeconds(0.1f);
+        yield return transform.DORotate(new Vector3(0,0,0),0.1f);
+
+
+        transform.rotation = Quaternion.Euler(0,0,0);
+
+        for(int i=1; i< transform.childCount; i ++)
+        {
+             transform.GetChild(i).position = new Vector3(transform.position.x , transform.GetChild(i).transform.position.y , transform.position.z);
+             transform.GetChild(i).rotation = transform.rotation;
+        }
+        
+        
     }
    
     IEnumerator AutomaticMove(Vector3 direction)
@@ -221,7 +242,7 @@ public class StackController : MonoBehaviour
                 GameManager.Instance.CharacterCount--;
                 EventManager.OnUnStack.Invoke();
                 Transform UnStackObject = transform.GetChild(2);
-                UnStackObject.DOMove ( other.transform.position + Vector3.up * transform.localScale.y *2 , 0.4f).OnComplete(()=> UnStackObject.DOMove(other.transform.position +Vector3.up * transform.localScale.y , 0.4f) );
+                UnStackObject.DOMove(new Vector3(other.transform.position.x ,transform.position.y -0.1f , other.transform.position.z ) , 0.4f) ;
                 UnStackObject.transform.SetParent(null);
                 UnStackObject.tag = "Collected";
 

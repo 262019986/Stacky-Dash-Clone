@@ -22,13 +22,13 @@ public class AnimationManager : Singleton<AnimationManager>
     
     private void OnEnable() 
     {
-        EventManager.OnLevelEnd.AddListener(() => Animator.SetTrigger("StopMovement"));
+        EventManager.OnStop.AddListener(() => Animator.SetTrigger("StopMovement"));
         
     }
 
     private void OnDisable() 
     {
-        EventManager.OnLevelEnd.RemoveListener(() => Animator.SetTrigger("StopMovement"));
+        EventManager.OnStop.RemoveListener(() => Animator.SetTrigger("StopMovement"));
     }
     
 }

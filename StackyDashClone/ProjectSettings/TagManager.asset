@@ -18,6 +18,7 @@ TagManager:
   - LeftArrow
   - RightArrow
   - Pass
+  - Final
   layers:
   - Default
   - TransparentFX

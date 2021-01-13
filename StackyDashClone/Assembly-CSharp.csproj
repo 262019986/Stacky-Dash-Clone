@@ -73,6 +73,10 @@
      <Compile Include="Assets\Game\Scripts\Managers\Singleton.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeEvents.cs" />
      <Compile Include="Assets\Game\Scripts\Managers\SwipeManager.cs" />
+     <Compile Include="Assets\Game\Scripts\UI\LevelIndex.cs" />
+     <Compile Include="Assets\Game\Scripts\UI\Panel.cs" />
+     <Compile Include="Assets\Game\Scripts\UI\ScoreCounter.cs" />
+     <Compile Include="Assets\Game\Scripts\UI\WinPanel.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
